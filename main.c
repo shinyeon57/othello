@@ -11,11 +11,13 @@ int main(int argc, char *argv[]) {
 	//필요한 변수 선언
 	init_stone();			//initial stone state
 	init_othello();			//game reset
+	count_stone();			//count the stone
 	//while(isgameend()==0){//game종료조건확인
 	//print_othello()//배치상태출력등
 	//if(배치가능칸확인))
 	//continue;//둘다불가능하면반복문빠져나가기 
-	input__white_blank();//배치할좌표입력받기 
+	input__white_stone();//배치할좌표입력받기
+	input__black_stone(); 
 	//IF(입력좌표적절체크))
 	//	if( 뒤집기시도)
 	//{몇개뒤집었는지;, 턴바꿈;}
