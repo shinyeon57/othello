@@ -8,7 +8,8 @@
 
 int gameboard[N][N];			 
 int main(int argc, char *argv[]) {
-	//필요한 변수 선언
+		int i,j;								//2차원 배열의 변수 //필요한 변수 선언
+	int row,col;							//입력받은돌의위치를위한변수 
 	init_stone();			//initial stone state
 	init_othello();			//game reset
 	count_stone();			//count the stone
@@ -16,8 +17,14 @@ int main(int argc, char *argv[]) {
 	//print_othello()//배치상태출력등
 	//if(배치가능칸확인))
 	//continue;//둘다불가능하면반복문빠져나가기 
-	input__white_stone();//배치할좌표입력받기
-	input__black_stone(); 
+
+	{printf("put a new white othello : ");	//배치할좌표입력받기
+	scanf("%i%i", &row, &col);
+	gameboard[row][col] = 'O' ;			//입력받은흰돌값넣어주기 
+	}
+	flip_white_stone_west(row, col);	//flip white stone _ direction : west
+    present_state_othello();      
+	//input__black_stone(); 
 	//IF(입력좌표적절체크))
 	//	if( 뒤집기시도)
 	//{몇개뒤집었는지;, 턴바꿈;}
