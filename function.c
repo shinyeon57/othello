@@ -86,33 +86,6 @@ void	input__black_stone(){	//input the positon of black stone
 } */
 
 
-
- 
-//e w n s ne nw se sw
-void flip_white_stone_west(int row, int col)				//flip black stone >>>>> white stone
-{
- 	
- 	int	w ;								//direction : west
-	int sum_w=0	;						//the number of flip stones ; west 
-
-    for(w=0;w<col-1;w++){
-    		if(gameboard[row][col-1-w] == 'O'){// 왼오	// 아니면 != ' ';; 블랙화이트합쳐서하기 if문 두개써서 
-            	sum_w++	;					//count the number of flip stones ; west
-    }
-    		else if(gameboard[row][col-1-w] == 'X'){
-    		gameboard[row][col-1-w] = 'O';		//filp the black stones
-    	
-    }}
-    printf("sum_w=%d\n", sum_w);
-
- 	//입력받은좌표의스톤배치하기____ok
-	//상하좌우대각선내에서뒤집을수있는조건확인하기
-	//뒤집기________________________ok
-	//뒤집은 후의 상태 출력하기 ____ok
-	//불가능하다면불가능함출력하기 
-	//뒤집은후의판출력하기
-}
-
 void present_state_othello(){
         
 		int i,j;
@@ -122,11 +95,30 @@ void present_state_othello(){
              printf("%i|", i);								//number of rows
             for(j=0;j<N;j++)
             {  
-                printf("%c|", gameboard[i][j]);
+                printf("%c|", gameboard[i][j]);				//present state of each blank
             }
             printf("\n-------------\n");
         }
         
-		printf("WHITE : O , BLACK : X\n");    
+		printf("WHITE : O , BLACK : X\n");   
+		count_stone(); 										//print the present status
+}
+
+void	check_invalid_input(int row, int col){
+	
+
+	if((col >= 6)||(row >= 6) )
+		printf("\ninvalid input! : should be less than 6\n");		//invalid input ; input's size
+	else if(gameboard[row][col] != ' ')
+		printf("\ninvalid input! : already occupied\n");			//invalid input ; already occupied 
+	else
+		gameboard[row][col] = 'O';
+
+//	else if(/*flip == 0*/)
+//		printf("invalid input! : no flips happen\n");
+}
+
+void	check_flip_happens(){
+	
 }
 
