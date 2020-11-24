@@ -9,7 +9,7 @@ int flip_white_stone_west(int row, int col)				//flip black stone >>>>> white st
  	int j ;													//for flip of west column
 	int sum_w=0	;											//the number of flip stones ; west 
 
-    for(west=0;west<col-1;west++){
+    for(west=0;west<=col-1;west++){
     		if(gameboard[row][col-1-west] == 'O'){		
             	for(j=0;j<west;j++){
   					if(gameboard[row][col-1-j] == 'X'){
@@ -70,11 +70,11 @@ int flip_white_stone_north(int row, int col)						//flip black stone to white st
  	int	i	;														//for flip of north row
 	int sum_n=0	;													//the number of flip stones ; north 
 
-    for(north=0;north<N-row-1;north++){
+    for(north=0;north<=row-1;north++){						/////////////////////////////////////////////////////////////north<N-row-1에서수정 
     		if(gameboard[row-1-north][col] == 'O'){
     			for(i=0;i<north;i++){
-    				if(gameboard[row-1-north][col] == 'X'){
-    				gameboard[row-1-north][col] = 'O';						//filp the black stones
+    				if(gameboard[row-1-i][col] == 'X'){
+    				gameboard[row-1-i][col] = 'O';						//filp the black stones
                 	sum_n++	;											//count the number of flip stones ; north	
     			}	
 			}
@@ -90,7 +90,7 @@ int flip_white_stone_NE(int row, int col)						//flip black stone to white stone
  	int	i	;														//for flip of NE
 	int sum_NE=0	;													//the number of flip stones ; NE 
 
-    for(north_east=0;north_east<N-row-1;north_east++){
+    for(north_east=0;north_east<=row-1;north_east++){		/////////////////////////////////////////////////////////////north_east<N-row-1에서수정
     		if(gameboard[row-1-north_east][col+1+north_east] == 'O'){
             	for(i=0;i<north_east;i++){
     				if(gameboard[row-1-i][col+1+i] == 'X'){
@@ -110,7 +110,7 @@ int flip_white_stone_NW(int row, int col)						//flip black stone to white stone
  	int	i	;														//for flip of NW
 	int sum_NW=0	;													//the number of flip stones ; NW 
 
-    for(north_west=0;north_west<N-row-1;north_west++){
+    for(north_west=0;north_west<=row-1;north_west++){			/////////////////////////////////////////////////////////////north_west<N-row-1에서수정
     		if(gameboard[row-1-north_west][col-1-north_west] == 'O'){
             	for(i=0;i<north_west;i++){
     				if(gameboard[row-1-i][col-1-i] == 'X'){
@@ -153,8 +153,8 @@ int flip_white_stone_SW(int row, int col)						//flip black stone to white stone
     for(south_west=0;south_west<N-row-1;south_west++){
     		if(gameboard[row+1+south_west][col-1-south_west] == 'O'){
             	for(i=0;i<south_west;i++){
-    				if(gameboard[row+1+south_west][col-1-south_west] == 'X'){
-    				gameboard[row+1+south_west][col-1-south_west] = 'O';						//filp the black stones
+    				if(gameboard[row+1+i][col-1-i] == 'X'){
+    				gameboard[row+1+i][col-1-i] = 'O';						//filp the black stones
     	            sum_SW++	;											//count the number of flip stones ; SW
 				}
     		}	
@@ -170,3 +170,4 @@ void flip_white_stone_result(int row, int col){		//흰색돌검은색돌로뒤집고결과출�
 	flip_white_stone_SE(row,col),flip_white_stone_SW(row,col),flip_white_stone_NE(row,col),flip_white_stone_NW(row,col));
 	
 } 
+
