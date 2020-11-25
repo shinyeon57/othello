@@ -131,7 +131,7 @@ int flip_happens(int row, int col)
     		if(gameboard[row+1+south_west][col-1-south_west] == gameboard[row][col])
     			return 1;
 		}  
-		return 2;														//같은 돌이 없으므로 플립이 일어나지 않는다. 
+		return 2;														//같은 돌이 없으므로 플립이 일어나지 않는다. 	
 	}
 	else
 		return 0;														//플립이 일어나지 않는다. 
@@ -144,25 +144,25 @@ void turnofgame(){						//flip이 되지 않아서 자동으로 다음 turn으로 넘어간다.
 	int blank_count =0 , nonflip_count = 0;
 	int ch_i, ch_j;						//존재하는 빈칸에 대해 플립이 일어나는 지 확인하기 위한 변수. 
 	
-	if(turn == 0){														//다 넣어보는거지 일단 빈칸에 흰색 돌을 넣었을 때 플립이 안 일어난다. 
+	if(turn == 0){															//흰색 돌의 turn일 때. 
 		for(ch_i=0;ch_i<N;ch_i++){
 			for(ch_j=0; ch_j<N;ch_j++){
-				if(gameboard[ch_i][ch_j] == ' '){
-					gameboard[ch_i][ch_j] = 'O';
-					blank_count++;						 
-					if(flip_happens(ch_i, ch_j) == 1){						//근데 모든 곳에서 플립이 안 일어나야 하는데? 그건 어카냐고,,,,,>하나라도가능하면나가면됨. 
-						gameboard[ch_i][ch_j] = ' ';						//원래상태로 되돌려준다. 												//하나라도 플립이 가능하다면 함수를 빠져나간다. 
+				if(gameboard[ch_i][ch_j] == ' '){							//비어있는 모든 칸에 대하여 
+					gameboard[ch_i][ch_j] = 'O';							//흰 돌을 넣어보고 
+					blank_count++;						 					//빈칸의 수를 세어준다. 
+					if(flip_happens(ch_i, ch_j) == 1){						//뒤집기가 가능하면 
+						gameboard[ch_i][ch_j] = ' ';						//원래상태로 되돌려준다. 												. 
 					}
-					else {					//그러면이게먼저생기면어떡하지???????? >>>>>>>>이조건일때continue하고 아니면 break걸고 탈출??? 
+					else {					
 						gameboard[ch_i][ch_j] = ' ';						//원래 상태로 되돌려준다. 
-						nonflip_count++;
+						nonflip_count++;									//뒤집을 수 없는 칸의 수를 센다. 
 					}
 				}		
 			}			
 		}
-		if(blank_count == nonflip_count){
+		if(blank_count == nonflip_count){								//빈칸의 수와 뒤집을 수 없는 칸의 수가 같을 때, 
 			printf("TURN PASS : FLIPS CAN'T HAPPEN\n");	
-			turn = 1;											//turn을 바꿔준다. 
+			turn = 1;													//turn을 바꿔준다. 
 		}				
 	}
 
@@ -172,7 +172,7 @@ void turnofgame(){						//flip이 되지 않아서 자동으로 다음 turn으로 넘어간다.
 				if(gameboard[ch_i][ch_j] == ' '){
 					gameboard[ch_i][ch_j] = 'X';
 					blank_count++;
-					if(flip_happens(ch_i, ch_j) == 1){																			//근데 모든 곳에서 플립이 안 일어나야 하는데? 그건 어카냐고,,,,,>하나라도가능하면나가면됨. 
+					if(flip_happens(ch_i, ch_j) == 1){															
 						gameboard[ch_i][ch_j] = ' ';						//원래상태로 되돌려준다. 
 					}
 					else {				
@@ -184,7 +184,7 @@ void turnofgame(){						//flip이 되지 않아서 자동으로 다음 turn으로 넘어간다.
 		}
 		if(blank_count == nonflip_count){
 			printf("TURN PASS : FLIPS CAN'T HAPPEN\n");			
-			turn = 0;											//turn을 바꿔준다.
+			turn = 0;														//turn을 바꿔준다.
 			present_state_othello();
 		}
 	} 
@@ -215,25 +215,8 @@ int	blankstate(){
 int	isGameEnd(){			//게임종료조건  칸이모두차거나, 모든 알이 한가지 색으로 통일되거나, 양쪽모두 뒤집기 불가능할 때 
 
 	int	i,j;
-/*	int sum_white = 0;		//sum of stone
-	int	sum_black = 0;
 	
-	for(i=0;i<N;i++){
-		for(j=0;j<N;j++){
-			if(gameboard[i][j]=='O')			//white stone: count up
-				sum_white += 1;					
-			else if(gameboard[i][j]=='X')		//black stone: count up
-				sum_black += 1;					
-		}
-	}
-	if((sum_white == 36) || (sum_black == 36)) 		//모든 알이 한가지 색으로 통일 
-		return 1;
-	else if((sum_white + sum_black) == 36)			//칸이 모두 찼을 때 
-		return 1;  
-//	else if(check_flip_happens == 0)										//양쪽 모두 뒤집기가 불가능할때 black과white모두뒤집기가==0일 이거말고 밑에거@@@@@ 
-//		return 1; 
-//	else
-	else*/ if((turn == 0 && flip_happens(i, j) != 1) && (turn == 1 && flip_happens(i, j) != 1))		//양쪽모두뒤집기가불가능할때 
+	if((turn == 0 && flip_happens(i, j) != 1) && (turn == 1 && flip_happens(i, j) != 1))		//양쪽모두뒤집기가불가능할때 
 			return 1;
 	else
 		return 0; 

@@ -2,22 +2,23 @@
 #define N 6
 
 //e w n s ne nw se sw
-int flip_black_stone_west(int row, int col)				//flip black stone >>>>> white stone
+int flip_black_stone_west(int row, int col)						//flip black stone >>>>> white stone
 {
  	
  	int	west ;													//direction : west
- 	int j ;													//for flip of west column
-	int sum_w=0	;											//the number of flip stones ; west 
+ 	int j ;														//for flip of west column
+	int sum_w=0	;												//the number of flip stones ; west 
 
     for(west=0;west<=col-1;west++){
     		if(gameboard[row][col-1-west] == 'X'){		
             	for(j=0;j<west;j++){
   					if(gameboard[row][col-1-j] == 'O'){
-    				gameboard[row][col-1-j] = 'X';			//filp the black stones
+    				gameboard[row][col-1-j] = 'X';				//filp the black stones
             		sum_w++	;									//count the number of flip stones ; west 	
     				}
 				}
-			}	
+			}
+		break;													//첫번째 이웃돌 사이에서 돌을 뒤집으면 for문을 빠져나간다.	
 	}
 	return sum_w;
 }
@@ -38,6 +39,7 @@ int flip_black_stone_east(int row, int col)						//flip black stone to white sto
 				}
     		}
 		}
+		break;													//첫번째 이웃돌 사이에서 돌을 뒤집으면 for문을 빠져나간다.
 	}
 	return sum_e;
 }
@@ -58,6 +60,7 @@ int flip_black_stone_south(int row, int col)						//flip black stone to white st
    				}			
 			}		
 		}
+		break;													//첫번째 이웃돌 사이에서 돌을 뒤집으면 for문을 빠져나간다.
 	}
 	return sum_s;
 }
@@ -79,6 +82,7 @@ int flip_black_stone_north(int row, int col)						//flip black stone to white st
     			}	
 			}
 		}
+		break;													//첫번째 이웃돌 사이에서 돌을 뒤집으면 for문을 빠져나간다.
 	}
 	return sum_n;
 }
@@ -99,6 +103,7 @@ int flip_black_stone_NE(int row, int col)						//flip black stone to white stone
     			}
 			}
 		}
+		break;													//첫번째 이웃돌 사이에서 돌을 뒤집으면 for문을 빠져나간다.
 	}
 	return sum_NE;
 }
@@ -119,6 +124,7 @@ int flip_black_stone_NW(int row, int col)						//flip black stone to white stone
     			}
 			}
 		}
+		break;													//첫번째 이웃돌 사이에서 돌을 뒤집으면 for문을 빠져나간다.
 	}
 	return sum_NW;
 }
@@ -138,7 +144,8 @@ int flip_black_stone_SE(int row, int col)						//flip black stone to white stone
     	            sum_SE++	;											//count the number of flip stones ; SE
 				}
     		}		
-		}	
+		}
+		break;													//첫번째 이웃돌 사이에서 돌을 뒤집으면 for문을 빠져나간다.	
 	}
 	return sum_SE;
 }
@@ -159,6 +166,7 @@ int flip_black_stone_SW(int row, int col)						//flip black stone to white stone
 				}
     		}	
 		}
+		break;													//첫번째 이웃돌 사이에서 돌을 뒤집으면 for문을 빠져나간다.
 	}
 	return sum_SW;
 }
