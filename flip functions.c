@@ -70,7 +70,7 @@ int flip_white_stone_north(int row, int col)						//flip black stone to white st
  	int	i	;														//for flip of north row
 	int sum_n=0	;													//the number of flip stones ; north 
 
-    for(north=0;north<=row-1;north++){						/////////////////////////////////////////////////////////////north<N-row-1에서수정 
+    for(north=0;north<=row-1;north++){						
     		if(gameboard[row-1-north][col] == 'O'){
     			for(i=0;i<north;i++){
     				if(gameboard[row-1-i][col] == 'X'){
@@ -90,7 +90,7 @@ int flip_white_stone_NE(int row, int col)						//flip black stone to white stone
  	int	i	;														//for flip of NE
 	int sum_NE=0	;													//the number of flip stones ; NE 
 
-    for(north_east=0;north_east<=row-1;north_east++){		/////////////////////////////////////////////////////////////north_east<N-row-1에서수정
+    for(north_east=0;north_east<=row-1;north_east++){		
     		if(gameboard[row-1-north_east][col+1+north_east] == 'O'){
             	for(i=0;i<north_east;i++){
     				if(gameboard[row-1-i][col+1+i] == 'X'){
@@ -110,7 +110,7 @@ int flip_white_stone_NW(int row, int col)						//flip black stone to white stone
  	int	i	;														//for flip of NW
 	int sum_NW=0	;													//the number of flip stones ; NW 
 
-    for(north_west=0;north_west<=row-1;north_west++){			/////////////////////////////////////////////////////////////north_west<N-row-1에서수정
+    for(north_west=0;north_west<=row-1;north_west++){			
     		if(gameboard[row-1-north_west][col-1-north_west] == 'O'){
             	for(i=0;i<north_west;i++){
     				if(gameboard[row-1-i][col-1-i] == 'X'){
@@ -165,9 +165,16 @@ int flip_white_stone_SW(int row, int col)						//flip black stone to white stone
 
 void flip_white_stone_result(int row, int col){		//흰색돌검은색돌로뒤집고결과출력하기 
 	
-	printf("	::FLIP RESULT::		\nE = %d, W = %d, S = %d, N = %d, SE = %d, SW = %d, NE = %d, NW = %d\n", flip_white_stone_east(row,col),
-	flip_white_stone_west(row,col), flip_white_stone_south(row,col),flip_white_stone_north(row,col),
-	flip_white_stone_SE(row,col),flip_white_stone_SW(row,col),flip_white_stone_NE(row,col),flip_white_stone_NW(row,col));
-	
+	int sum_e = flip_white_stone_east(row,col);
+	int sum_w = flip_white_stone_west(row,col);
+	int sum_n = flip_white_stone_north(row,col);
+	int sum_s = flip_white_stone_south(row,col);
+	int sum_NE = flip_white_stone_NE(row,col);
+	int sum_NW = flip_white_stone_NW(row,col);
+	int sum_SE = flip_white_stone_SE(row,col);
+	int sum_SW = flip_white_stone_SW(row,col);
+	int sum_stone = sum_e+ sum_w+sum_s+sum_n+sum_SE+sum_SW+sum_NE+sum_NW;
+	printf("	::FLIP RESULT::		\nE = %d, W = %d, S = %d, N = %d, SE = %d, SW = %d, NE = %d, NW = %d\nWHITE FLIPS %d BLACK\n\n", sum_e, sum_w, sum_s, 
+	sum_n, sum_SE, sum_SW, sum_NE, sum_NW, sum_stone);
 } 
 

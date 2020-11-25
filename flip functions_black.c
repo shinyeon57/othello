@@ -165,8 +165,16 @@ int flip_black_stone_SW(int row, int col)						//flip black stone to white stone
 
 void flip_black_stone_result(int row, int col){		//흰색돌검은색돌로뒤집고결과출력하기 
 	
-	printf("	::FLIP RESULT::		\nE = %d, W = %d, S = %d, N = %d, SE = %d, SW = %d, NE = %d, NW = %d\n", flip_black_stone_east(row,col),
-	flip_black_stone_west(row,col), flip_black_stone_south(row,col),flip_black_stone_north(row,col),
-	flip_black_stone_SE(row,col),flip_black_stone_SW(row,col),flip_black_stone_NE(row,col),flip_black_stone_NW(row,col));
+	int sum_e = flip_black_stone_east(row,col);
+	int sum_w = flip_black_stone_west(row,col);
+	int sum_n = flip_black_stone_north(row,col);
+	int sum_s = flip_black_stone_south(row,col);
+	int sum_NE = flip_black_stone_NE(row,col);
+	int sum_NW = flip_black_stone_NW(row,col);
+	int sum_SE = flip_black_stone_SE(row,col);
+	int sum_SW = flip_black_stone_SW(row,col);
+	int sum_stone = sum_e+ sum_w+sum_s+sum_n+sum_SE+sum_SW+sum_NE+sum_NW;
+	printf("	::FLIP RESULT::		\nE = %d, W = %d, S = %d, N = %d, SE = %d, SW = %d, NE = %d, NW = %d\nBLACK FLIPS %d WHITE\n\n", sum_e, sum_w, sum_s, 
+	sum_n, sum_SE, sum_SW, sum_NE, sum_NW, sum_stone);
 	
 } 
