@@ -29,8 +29,8 @@ int flip_black_stone_SW(int row, int col);
 
 int flip_happens_first(int row, int col);
 int flip_happens(int row, int col);
-int flip_white_stone_result(int row, int col);
-int flip_black_stone_result(int row, int col);				//flip function//
+void flip_white_stone_result(int row, int col);
+void flip_black_stone_result(int row, int col);				//flip function//
 
 int check_invalid_input(int row, int col);					//checking invalid input 
 void check_result(); 										//check the winner

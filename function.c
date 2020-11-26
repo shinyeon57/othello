@@ -69,10 +69,6 @@ int	check_invalid_input(int row, int col){
 		printf("\ninvalid input! : already occupied\n");												//invalid input ; already occupied 
 		return 1;
 	}
-	else  if((flip_black_stone_result(row, col) == 0) || (flip_white_stone_result(row, col) == 0)){		//invalid input ; no flips happen
-		printf("\ninvalid input! : no flips happen\n");
-		return 1;
-	} 
 	else{
 		return 0;
 	}
@@ -84,7 +80,7 @@ int flip_happens_first(int row, int col){
 	
 	for(i=-1;i<2;i++){
 		for(j=-1;j<2;j++){
-			if((gameboard[row][col] != gameboard[row+i][col+j])&&(gameboard[row+i][col+j]!=' ')){	//뒤집기를 위한 첫 조건: 8방중에 하나라도 다른 돌이 있다.(빈칸제외) 
+			if(gameboard[row][col] != gameboard[row+i][col+j]){	//뒤집기를 위한 첫 조건: 8방중에 하나라도 다른 돌이 있다.(빈칸제외) 
 				if((i!=0)&&(j!=0)){
 					return 1;																		//단, 같은 칸이 아닐때 
 				}															

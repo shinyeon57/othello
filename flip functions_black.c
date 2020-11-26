@@ -163,7 +163,7 @@ int flip_black_stone_SW(int row, int col)								//flip black stone to white sto
 	return sum_SW;
 }
 
-int flip_black_stone_result(int row, int col){		//흰색돌검은색돌로뒤집고결과출력하기 
+void flip_black_stone_result(int row, int col){		//흰색돌검은색돌로뒤집고결과출력하기 
 	
 	int sum_e = flip_black_stone_east(row,col);
 	int sum_w = flip_black_stone_west(row,col);
@@ -177,7 +177,5 @@ int flip_black_stone_result(int row, int col){		//흰색돌검은색돌로뒤집고결과출력
 	
 	printf("	::FLIP RESULT::		\nE = %d, W = %d, S = %d, N = %d, SE = %d, SW = %d, NE = %d, NW = %d\n\nBLACK FLIPS %d WHITE\n\n", sum_e, sum_w, sum_s, 
 	sum_n, sum_SE, sum_SW, sum_NE, sum_NW, sum_stone);
-	
-	return sum_stone;
 	
 } 
