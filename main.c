@@ -24,7 +24,7 @@ int main(int argc, char *argv[]) {
 						if(check_invalid_input(row, col) == 0){							//checking invalid input ; when check_invalid_input == 0 > valid input 	
 							gameboard[row][col] = 'O';									//flip_first를 위해서 일단 돌을 위치시켜준다._white stone	
 							if(flip_happens(row, col) == 1){							//입력한 돌로 인한 뒤집기가 가능하다. 
-															//몇개뒤집었는지출력하고 턴바꿔주기 
+															 
 									flip_white_stone_result(row,col);		  			//뒤집고 뒤집은 결과 화면에 출력 
 									turn = 1; 											//뒤집은 후 다음 턴으로 돌아가기 
 							} 
